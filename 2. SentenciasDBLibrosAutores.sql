@@ -19,10 +19,10 @@ CREATE TABLE libros(
 	autor_id 			INT 			UNSIGNED NOT NULL,
 	titulo				VARCHAR(50) 	NOT NULL,
 	descripcion			VARCHAR(250),
-	paginas				INT 			UNSIGNED,
+	paginas				INT 			UNSIGNED NOT NULL DEFAULT 0,
 	fecha_publicacion 	DATE 			NOT NULL,
 	fecha_creacion 		DATETIME 		DEFAULT current_timestamp,
-	FOREIGN KEY (autor_id) REFERENCES autores(autor_id)
+	FOREIGN KEY (autor_id) REFERENCES autores(autor_id) ON DELETE CASCADE
 );
 
 INSERT INTO autores (nombre, apellido, seudonimo, genero, fecha_nacimiento, pais_origen)
