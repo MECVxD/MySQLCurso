@@ -26,12 +26,21 @@ CREATE TABLE libros(
 );
 
 CREATE TABLE usuarios(
-	usurio_id			INT 			UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	usuario_id			INT 			UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	nombre				VARCHAR(25)		NOT NULL NOT NULL,
 	apellidos			VARCHAR(25),
 	username			VARCHAR(25)		NOT NULL,
 	email				VARCHAR(50)		NOT NULL,
 	fecha_creacion 		DATETIME 		DEFAULT current_timestamp
+);
+
+CREATE TABLE libros_usuarios(
+  libro_id INT UNSIGNED NOT NULL,
+  usuario_id INT UNSIGNED NOT NULL,
+
+ FOREIGN KEY (libro_id) REFERENCES libros(libro_id),
+ FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
+  fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 ALTER TABLE libros ADD ventas INT UNSIGNED NOT NULL DEFAULT 0;
@@ -113,7 +122,12 @@ VALUES 	(1, 'Carrie','1974-01-01'),
 	
 INSERT INTO usuarios (nombre, apellidos, username, email)
 VALUES 	('juan', 'perez', 'jjperez', 'jjperez@correo.com'),
-		('pedro', 'perez', '2perez', '2perez@correo.com');	
+		('pedro', 'perez', '2perez', '2perez@correo.com'),
+		('2juan', 'perez', '3perez', '3perez@correo.com'),
+		('2pedro', 'perez', '4perez', '4perez@correo.com');	
+	
+INSERT INTO libros_usuarios(libro_id, usuario_id)
+VALUES (1, 1), (2, 1), (3, 1), (10, 3), (20, 3), (30, 3);
 		
 DELIMITER // 
 
