@@ -55,6 +55,8 @@ VALUES 	('Stephen Edwin', 'King', 'Richard Bachman', '1947-09-27', 'M', 'USA'),
         ('Miguel', 'de Unamuno', NULL, '1892-01-03', 'M', 'USA'),
         ('Arturo', 'Pérez Reverte', NULL, '1951-11-25', 'M', 'España'),
         ('George Raymond', 'Richard Martin', NULL, '1948-09-20', 'M', 'USA');
+       
+ALTER TABLE autores ADD COLUMN cantidad_libros INT DEFAULT  0;     
 
 INSERT INTO libros (autor_id, titulo, fecha_publicacion)
 VALUES 	(1, 'Carrie','1974-01-01'),
